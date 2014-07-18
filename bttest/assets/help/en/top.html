@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../img/main.css">
+<title>BFV Adapter for Paraglider Dashboard</title>
+</head>
+<body>
+<h3>BlueFlyVario Adapter for Paraglider Dashboard</h3>
+This app provides a service to connect the <a href="http://www.blueflyvario.com/">BlueFlyVario</a> 
+ (the BT version) with the <a href="market://details?id=com.eb.ohrh.parawind.free">Paraglider Dashboard App.</a> 
+</br>If a BlueFlyVario is connected via bluetooth, the variometer of Paraglider Dashboard will 
+show the rate of descent or climb based on atmospheric pressure rather than on GPS data.
+<h3>Connection Setup</h3>
+</p>Select the BlueFlyVario device and pair it with your smartphone if not yet done.
+The app will try to connect and will show the current atmospheric pressure and 
+the battery value in case of successful connection. (It may take several tries until successful connection.)
+</br>That's all. This app is only needed once, for selecting the BFV device.
+After that Paraglider Dashboard will automatically connect to the BlueFlyVario.
+<h3>Hardware setup</h3>
+</p>This app does not support hardware configuration of the BlueFlyVario.
+Use the <a href="market://details?id=com.bfv">BlueFlyVario App</a> for changing hardware settings.
+You must disconnect the BFV from this app or close it before connecting to the BlueFlyVario app.
+<h3>Why a separate app</h3>
+You may ask, why this function is not build-in directly into Paraglider Dashboard.
+The reason is, that users do not like to accept additional permissions, like e.g. bluetooth
+connection, especially if bluetooth is not needed for the majority of users.
+Having this app as a mediator, Paraglider Dashboard does not
+need bluetooth permission, but can still connect to the BlueFlyVario. 
+<h3>How it works</h3>
+The app installs a service, which can be started and stopped by Paraglider Dashboard.
+The service runs only as long as Paraglider Dashboard is running.
+The task of the service is to read the pressure data from the BlueFlyVario and to send it to Paraglider Dashboard.
+<p><a href="../de/top.html">Show German Version</a>
+</body>
+</html>

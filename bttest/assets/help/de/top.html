@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../img/main.css">
+<title>BFV Adapter für Gleitschirm Cockpit</title>
+</head>
+<body>
+<h3>BlueFlyVario Adapter für Gleitschirm Cockpit</h3>
+Mit dieser App können Sie ein <a href="http://www.blueflyvario.com/">BlueFlyVario</a> 
+ (die Bluetooth version) mit dem <a href="market://details?id=com.eb.ohrh.parawind.free">Gleitschirm Cockpit</a> verbinden. 
+</br>Sobald das BlueFlyVario über Bluetooth verbunden ist, zeigt das Variometer des
+Gleitschirm-Cockpits die Steig- und Sinkwerte basierend auf den Luftdruck-Änderungen statt
+anhand der GPS-Daten.
+<h3>Verbindung herstellen</h3>
+</p>Falls noch nicht geschehen, stellen Sie zunächst in den Bluetooth Einstellungen das Pairing mit dem BlueFlyVario her. 
+Wählen Sie dann im Geräte-Auswahldialog das BlueFlyVario aus. 
+Die App versucht eine Verbindung herzustellen und zeigt bei Erfolg den gemessenen Luftdruck und den
+Akku Ladezustand an. (Manchmal können mehrere Verbindungsversuche notwendig sein.)
+</br>Das ist alles. Die App kann danach geschlossen werden. Das Gleitschirm Cockpit erkennt das Vorhandensein der App und
+verbindet sich automatisch mit dem BlueFlyVario.
+<h3>Hardware Einstellungen</h3>
+</p>Einstellungen an der BlueFlyVario Hardware werden nicht unterstützt und müssen weiterhin über die
+<a href="market://details?id=com.bfv">BlueFlyVario App</a> erfolgen.
+Unterbrechen Sie dazu die Verbindung dieser App zum BlueFlyVario oder schliessen Sie diese App.
+<h3>Wieso eine eigene App?</h3>
+Vielleicht fragen Sie sich, warum diese Funktion nicht direkt ins Gleitschirm-Cockpit eingebaut wurde.
+Der Grund ist die zusätzliche Bluetooth-Berechtigung, die für die Mehrzahl der Benutzer ohne
+ersichtlichen Grund verlangt werden müßte.
+Mit dieser App als Vermittler kann das Gleitschirm Cockpit selbst weiterhin ohne Bluetooth-Berechtigung auskommen.
+<h3>Funktionsweise</h3>
+Die App installiert einen Servvice, der vom Gleitschirm Cockpit gestartet und gestoppt werden kann.
+Der Service läuft nur, solange das Gleitschirm Cockpit läuft.
+Seine Aufgabe ist es, die Luftdruck-Daten vom BlueFlyVario zu lesen und ans Gleitschirm Cockpit zu senden.
+<p><a href="../en/top.html">Englische Version anzeigen</a>
+
+</body>
+</html>
