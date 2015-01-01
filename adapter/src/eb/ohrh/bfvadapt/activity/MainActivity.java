@@ -19,10 +19,8 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
-
-import eb.ohrh.bfvadapt.debug.R;
-
 import eb.ohrh.bfvadapt.bluetooth.BluetoothConnectionManager;
+import eb.ohrh.bfvadapt.debug.R;
 
 /* The StartScreen of the BlueFlyVario-Adapter App */
 public class MainActivity extends Activity {
@@ -32,7 +30,7 @@ public class MainActivity extends Activity {
     private static final String ROOT_DE = "file:///android_asset/help/de/";
     private static final String TOP_PAGE = "top.html";
 
-    static public final String INTENT_ACTION_START = "eb.ohrh.bfvadapt.service.START";
+    static private final String SERVICE_CLASS = "eb.ohrh.bfvadapt.service.BFVAdapterService";
 
     // private BluetoothConnectionManager mgr;
     private ViewHolder vh;
@@ -196,13 +194,23 @@ public class MainActivity extends Activity {
             vh.webView.loadUrl(url);
             vh.webView.setBackgroundColor(0x00000000);
         }
+        /** Set initially meaningful values */
+        setButtonTextAndAction(State.INIT, "");
         /**
          * Start the service in onCreate, to make sure it is not always
-         * disconnecting, when the activity is unbinding in onPause or on
+         * disconnecting, when the activity is un-binding in onPause or on
          * configuration changes.
          */
-        Intent bfvService = new Intent(INTENT_ACTION_START);
+        Intent bfvService = getBfvServiceIntent();
         startService(bfvService);
+    }
+
+    private Intent getBfvServiceIntent() {
+        Intent bfvService = new Intent();
+        ComponentName serviceComponentName = new ComponentName(this,
+                SERVICE_CLASS);
+        bfvService.setComponent(serviceComponentName);
+        return bfvService;
     }
 
     private void findViews() {
@@ -220,7 +228,7 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         // Bind the activity to the service
-        Intent bfvService = new Intent(INTENT_ACTION_START);
+        Intent bfvService = getBfvServiceIntent();
         // BIND_AUTO_CREATE: Binding is stronger than a stopService call
         this.bindService(bfvService, mConnection, Service.BIND_AUTO_CREATE);
     }
@@ -242,7 +250,8 @@ public class MainActivity extends Activity {
 
     private void forceStopService() {
         this.unbindService(mConnection);
-        Intent bfvService = new Intent(INTENT_ACTION_START);
+        mBound = false;
+        Intent bfvService = getBfvServiceIntent();
         if (stopService(bfvService)) {
             setButtonTextAndAction(State.SERVICE_STOPPED, null);
         }
@@ -312,9 +321,13 @@ public class MainActivity extends Activity {
             buttonText = R.string.button_label_start_service;
             action = Actions.START_SERVICE;
             break;
+        case INIT:
+            buttonText = R.string.button_label_exit;
+            action = Actions.EXIT;
+            break;
         default:
             buttonText = R.string.button_label_illegal_state;
-            action = null;
+            action = Actions.EXIT;
             break;
         }
         vh.button1.setText(buttonText);
@@ -378,6 +391,9 @@ public class MainActivity extends Activity {
         case SERVICE_STOPPED:
             statusTextLine1 = R.string.status_text_service_stopped;
             break;
+        case INIT:
+            statusTextLine1 = R.string.status_text_initializing;
+            break;
         default:
             statusTextLine1 = R.string.status_text_illegalstate;
             break;
@@ -398,7 +414,7 @@ public class MainActivity extends Activity {
             finish();
             break;
         case START_SERVICE:
-            Intent bfvService = new Intent(INTENT_ACTION_START);
+            Intent bfvService = getBfvServiceIntent();
             startService(bfvService);
             bindService(bfvService, mConnection, Service.BIND_AUTO_CREATE);
         default:
@@ -431,7 +447,7 @@ public class MainActivity extends Activity {
             mBound = false;
         }
         if (isFinishing()) {
-            Intent bfvService = new Intent(INTENT_ACTION_START);
+            Intent bfvService = getBfvServiceIntent();
             stopService(bfvService);
         }
 

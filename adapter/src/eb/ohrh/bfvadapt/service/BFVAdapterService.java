@@ -18,14 +18,12 @@ import android.os.RemoteException;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
-
-import eb.ohrh.bfvadapt.debug.R;
-
 import eb.ohrh.bfvadapt.activity.MainActivity;
 import eb.ohrh.bfvadapt.bluetooth.BluetoothConnectionManager;
 import eb.ohrh.bfvadapt.bluetooth.BluetoothConnectionManager.Actions;
 import eb.ohrh.bfvadapt.bluetooth.BluetoothConnectionManager.Listener;
 import eb.ohrh.bfvadapt.bluetooth.BluetoothConnectionManager.State;
+import eb.ohrh.bfvadapt.debug.R;
 import eb.ohrh.bfvadapt.model.Model;
 import eb.ohrh.bfvadapt.model.ModelListener;
 
@@ -60,7 +58,7 @@ public class BFVAdapterService extends Service implements ModelListener,
     static final int REQUEST_PRESSURE_UPDATE = 1;
     static final int CONNECT = 4;
 
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     private BluetoothConnectionManager mConnectionManager;
 

@@ -28,6 +28,7 @@
     <string name="status_text_service_started">Service connected. Status unknown</string>
     <string name="status_text_service_stopped">Service was manually stopped</string>
     <string name="status_text_illegalstate">Illegal state</string>
+    <string name="status_text_initializing">Not yet connected to service. Please wait.</string>
     <string name="label_pressure">Pressure: </string>
     <string name="label_battery">Battery: </string>
 

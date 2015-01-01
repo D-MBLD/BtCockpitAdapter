@@ -3,6 +3,14 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <!--
+While developing use eb.ohrh.bfvadapt.debug instead of eb.ohrh.bfvadapt as package name
+and set the launcher-icon to ic_launcher_debug, which allows you to distinguish the
+debug version from the productive version on your phone.
+
+But note: Paraglider Dashboard will always try to connect to the productive service.
+(Can be changed in expert mode. Drop me an email for that.)
+    -->
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="15" />
@@ -11,7 +19,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_launcher_debug"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -25,9 +33,6 @@
         </activity>
 
         <service android:name="eb.ohrh.bfvadapt.service.BFVAdapterService" >
-            <intent-filter>
-                <action android:name="eb.ohrh.bfvadapt.service.START" />
-            </intent-filter>
         </service>
     </application>
 
