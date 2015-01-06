@@ -1,4 +1,4 @@
-bfvCockpitAdapter
+BtCockpitAdapter
 =================
 
-Adapter for connecting BlueFlyVario with Paraglider Cockpit
+Adapter for connecting bluetooth varios like the BlueFlyVario or FlyNet with Paraglider Cockpit
